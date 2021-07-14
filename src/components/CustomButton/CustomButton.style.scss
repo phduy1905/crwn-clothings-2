@@ -20,12 +20,16 @@
     color: black;
     border: 1px solid black;
   }
+}
 
-  .google {
-    background-color: #4285f4;
+.google-auth {
+  background-color: #4285f4;
+  border: 1px solid #4285f4;
+  color: white;
 
-    &:hover {
-      background-color: #196bf0;
-    }
+  &:hover {
+    background-color: #196bf0;
+    border: 1px solid #196bf0;
+    color: white;
   }
 }
