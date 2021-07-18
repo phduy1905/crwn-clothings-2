@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage/HomePage.component";
 import ShopPage from "./pages/ShopPage/ShopPage.component";
 import Header from "./components/Header/Header.component";
 import SignInSignUpPage from "./pages/SignInSignUpPage/SignInSignUpPage.component";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { auth } from "./components/Firebase/firebase.utils";
 import { Component } from "react";
 import { createUserProfileDocument } from "./components/Firebase/firebase.utils";
@@ -41,7 +41,17 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/shop" component={ShopPage} />
-            <Route exact path="/signin" component={SignInSignUpPage} />
+            <Route
+              exact
+              path="/signin"
+              render={() =>
+                this.props.currentUser ? (
+                  <Redirect to="/" />
+                ) : (
+                  <SignInSignUpPage />
+                )
+              }
+            />
           </Switch>
         </div>
       </BrowserRouter>
@@ -52,4 +62,8 @@ class App extends Component {
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
-export default connect(null, mapDispatchToProps)(App);
+
+const mapStateToProps = ({ user }) => ({
+  setCurrentUser: user.currentUser,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);
