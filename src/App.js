@@ -5,6 +5,7 @@ import ShopPage from "./pages/ShopPage/ShopPage.component";
 import Header from "./components/Header/Header.component";
 import SignInSignUpPage from "./pages/SignInSignUpPage/SignInSignUpPage.component";
 import CheckOutPage from "./pages/CheckOutPage/CheckOutPage.component";
+import CollectionPage from "./pages/CollectionPage/CollectionPage.component";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { auth } from "./components/Firebase/firebase.utils";
@@ -48,6 +49,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckOutPage} />
+            <Route path="/shop/:collectionId" component={CollectionPage} />
             <Route
               exact
               path="/signin"
