@@ -3,14 +3,18 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage.component";
 import ShopPage from "./pages/ShopPage/ShopPage.component";
 import Header from "./components/Header/Header.component";
+
 import SignInSignUpPage from "./pages/SignInSignUpPage/SignInSignUpPage.component";
 import CheckOutPage from "./pages/CheckOutPage/CheckOutPage.component";
 import CollectionPage from "./pages/CollectionPage/CollectionPage.component";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { auth } from "./components/Firebase/firebase.utils";
 import { Component } from "react";
-import { createUserProfileDocument } from "./components/Firebase/firebase.utils";
+import {
+  createUserProfileDocument,
+  auth,
+} from "./components/Firebase/firebase.utils";
+
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector } from "reselect";

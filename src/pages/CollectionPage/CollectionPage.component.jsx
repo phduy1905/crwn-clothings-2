@@ -4,7 +4,10 @@ import { selectCollection } from "../../redux/shop/shop.selector";
 import CollectionItem from "../../components/CollectionItem/CollectionItem.component";
 
 const CollectionPage = ({ collection }) => {
-  const { title, items } = collection;
+  console.log(collection);
+  //const { title, items } = collection
+  const title = collection?.title || "";
+  const items = collection?.items || [];
   return (
     <div className="collection-page">
       <h2 className="title">{title}</h2>
